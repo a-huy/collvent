@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+        {% endblock title %}
+
+        {% block styles %}
+        {% endblock styles %}
+
+        <script type="text/javascript">
+            {% if json_vars %}
+            var jsonVars = {{ json_vars|safe }};
+            {% else %}
+            var jsonVars = {};
+            {% endif %}
+        </script>
+    </head>
+    <body>
+        {% block body %}
+        {% endblock body %}
+    </body>
+    {% block scripts %}
+    {% endblock scripts %}
+</html>
