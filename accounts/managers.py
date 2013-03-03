@@ -8,7 +8,7 @@ class CollventUserManager(BaseUserManager):
             raise ValueError('Users must have either email or phone')
 
         validate_email(email)
-        if not uuid: uuid = uid4().hex
+        if not uuid: uuid = uuid4().hex
 
         user = self.model(email=CollventUserManager.normalize_email(email),
             phone=phone,
@@ -18,7 +18,7 @@ class CollventUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, uuid, password, email=None, phone=None):
+    def create_superuser(self, password, uuid=None, email=None, phone=None):
         user = self.create_user(uuid=uuid, email=email, phone=phone, password=password)
         user.is_admin = True
         user.save(using=self._db)
