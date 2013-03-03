@@ -55,7 +55,7 @@ body
 	width: 31px;
 	height: 40px;
 
-	background-image: url("{{ STATIC_URL }}images/base/home.png");
+	background-image: url("/content/static/images/base/home.png");
 }
 
 #NavigationBar .notificationsButton
@@ -83,7 +83,7 @@ body
 	font-style: italic;
 	font-size: 23px;
 
-	background-image: url("{{ STATIC_URL }}images/base/notifications_active.png");
+	background-image: url("/content/static/images/base/notifications_active.png");
 }
 
 #NavigationBar .notificationsButton .count.inactive
