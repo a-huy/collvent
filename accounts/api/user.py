@@ -31,8 +31,8 @@ class UserCreateApi(base.RestView):
             if email: validate_email(email)
             if phone: phone = user_lib.clean_us_phone_number(phone)
             user = accounts_models.User.objects.get(email=email)
-        # except ValidationError:
-            # return HttpResponseBadRequest('The email or phone number you have submitted is not valid.')
+        except ValidationError:
+            return HttpResponseBadRequest('The email or phone number you have submitted is not valid.')
         except accounts_models.User.DoesNotExist:
             try:
                 user = accounts_models.User.objects.get(phone=phone)
