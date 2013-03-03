@@ -8,6 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', include('homepage.urls')),
+    url(r'^accounts/', include('accounts.urls')),
     url(r'^api/', include('base.api.urls')),
     url(r'^content/(.*)$', 'django.views.static.serve', 
         {'document_root': os.path.join(settings.PROJECT_PATH, 'content')}),

@@ -30,3 +30,7 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+def create_account(request):
+    return render_to_response('create_account.html', {},
+        context_instance=RequestContext(request))

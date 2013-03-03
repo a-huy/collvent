@@ -1,0 +1,19 @@
+{% extends "page_base.html" %}
+
+{% block body %}
+<form id="create-form">{% csrf_token %}
+    <p>First Name: <input type="text" id="input-first" /></p>
+    <p>Last Name: <input type="text" id="input-last" /></p>
+    <p>Email*: <input type="text" id="input-email" /></p>
+    <p>Phone (digits only)*: <input type="text" id="input-phone" /></p>
+    <p>Password: <input type="password" id="input-pass" /></p>
+    <p>Confirm Password: <input type="password" id="pass-conf" /></p>
+    <p>* You must submit at least a valid email or phone number</p>
+    <p><input type="button" id="create-submit" value="Create" /></p>
+    <p><div class="notify"></div></p>
+</form>
+{% endblock body %}
+
+{% block scripts %}
+<script src="{{ STATIC_URL }}scripts/accounts/create_account.js"></script>
+{% endblock scripts %}

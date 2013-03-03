@@ -28,7 +28,7 @@
             if (settings.timeOut) {
                 $notify.data('notifyTimeoutId', setTimeout(function() { 
                     $notify.hide(settings.effect); 
-                    if (settings.refresh) window.location = document.URL;
+                    if (settings.refresh) document.location.reload();
                 }, settings.timeOut));
             }
         });

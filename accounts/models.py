@@ -49,3 +49,7 @@ class User(AbstractBaseUser):
     def has_perm(self, perm, obj=None):
         if self.is_admin: return True
         return False
+
+    @property
+    def password_set(self):
+        return not self.check_password(' ')

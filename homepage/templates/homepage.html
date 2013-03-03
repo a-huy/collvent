@@ -6,6 +6,7 @@
 </div>
 YOLO SWAG
 
+<p><a href="{% url 'create_account' %}">Create Account</a></p>
 {% if user.is_authenticated %}
 <p>{{ user.uuid }}</p>
 <p><a href="{% url 'logout' %}">Logout</a></p>

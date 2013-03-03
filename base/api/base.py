@@ -15,7 +15,7 @@ class RestView(object):
         _METHODS = ('GET', 'PUT', 'POST', 'DELETE', 'UNDELETE')
         if not method in _METHODS: return HttpResponseBadRequest()
         try:
-            return gettattr(self, method)(request, *args, **kwargs)
+            return getattr(self, method)(request, *args, **kwargs)
         except NotImplementedError:
             methods = [getattr(self, m) for m in _METHODS if hasattr(self, m)]
             methods = [m.__name__ for m in methods if getattr(m, '_impl', True)]
