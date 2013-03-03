@@ -14,8 +14,8 @@ class Place(b_base.Base):
 
 class Event(b_base.Base): 
         host = models.ForeignKey(settings.AUTH_USER_MODEL)
-        start_date = models.DateField()
-        end_date = models.DateField()
+        start_date = models.DateField(null=True)
+        end_date = models.DateField(null=True)
         description = models.TextField(max_length=constants.MAX_DESCRIPTION)
         location = models.ForeignKey(Place)
 
