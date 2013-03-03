@@ -115,6 +115,10 @@ INSTALLED_APPS = (
     'south',
     'base',
     'homepage',
+    'accounts',
+    'events',
+    'polls',
+    'conversations',
     # 'django.contrib.admindocs',
 )
 
