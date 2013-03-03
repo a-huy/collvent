@@ -156,3 +156,6 @@ LOGGING = {
         },
     }
 }
+
+# Google APIs
+GOOGLE_API_KEY = 'AIzaSyDsiKBKKXmX2c92w7bKQ6hJm5IeR-ACKRQ'
