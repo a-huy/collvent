@@ -3,8 +3,10 @@
     <head>
         {% block title %}
         {% endblock title %}
-
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="stylesheet" href="{{ STATIC_URL }}styles/base/normalize.css"
+            type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ STATIC_URL }}styles/base/page_base.css"
             type="text/css" media="screen" />
         {% block styles %}
         {% endblock styles %}
@@ -20,6 +22,15 @@
         </script>
     </head>
     <body>
+		<div id="NavigationBar">
+			<a class="button left homeButton" href="#"></a>
+			<a class="button left divider" href="#"></a>
+			<a class="button left notificationsButton" href="#"><!--
+                --><div class="count inactive">0</div><!--
+                --><div class="title">Notifications</div><!--
+            --></a>
+			<a class="button right addEventButton" href="#"></a>
+		</div>
         {% block body %}
         {% endblock body %}
     </body>

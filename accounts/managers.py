@@ -7,13 +7,24 @@ class CollventUserManager(BaseUserManager):
         if not email and not phone:
             raise ValueError('Users must have either email or phone')
 
-        validate_email(email)
+	# Get the random hash        
         if not uuid: uuid = uuid4().hex
 
-        user = self.model(email=CollventUserManager.normalize_email(email),
-            phone=phone,
-            uuid=uuid
-        )
+        # If there is an email, make the user with email
+        if email:
+        	validate_email(email)
+	        user = self.model(email=CollventUserManager.normalize_email(email),
+                    phone=phone,
+                    uuid=uuid
+		)
+
+        # If there is no email, make the user with phone number
+	if not email:
+		user = self.model(phone=phone,
+                       uuid=uuid
+		)
+
+
         user.set_password(password)
         user.save(using=self._db)
         return user
