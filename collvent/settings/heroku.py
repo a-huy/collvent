@@ -5,7 +5,10 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': dj_database_url.config(),
+}
+DATABASES['default']['OPTIONS'] = {
+    'autocommit': True,
 }
 
 # Sendgrid config

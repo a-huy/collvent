@@ -3,17 +3,17 @@ import django.contrib.auth as auth
 user_model = auth.get_user_model()
 
 class CollventBackend(object):
-    def authenticate(self, user=None, email=None, phone=None):
-        if not email and not phone:
-            return None
+    def authenticate(self, identifier, password=None):
         try:
-            user = user_model.objects.get(email=email)
+            user = user_model.objects.get(email=identifier)
         except user_model.DoesNotExist:
             try:
-                user = user_model.objects.get(phone=phone)
+                user = user_model.objects.get(phone=identifier)
             except user_model.DoesNotExist:
                 return None
-        return user
+        if user.check_password(password):
+            return user
+        return None
 
     def get_user(self, user_id):
         try:

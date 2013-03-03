@@ -1,0 +1,23 @@
+{% extends "page_base.html" %}
+
+{% block body %}
+<form id="login-form">{% csrf_token %}
+    <table>
+        <tr>
+            <td>Email or Phone Number:</td>
+            <td><input type="text" name="identifier" id="identifier" /></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" id="password" /></td>
+        </tr>
+        <tr><td><input type="button" id="login-submit" value="Log In" /></td></tr>
+    </table>
+    <input type="hidden" name="next" id="next" value="{{ next }}" />
+    <p><div class="notify"></div></p>
+</form>
+{% endblock body %}
+
+{% block scripts %}
+<script src="{{ STATIC_URL }}scripts/accounts/login.js"></script>
+{% endblock scripts %}

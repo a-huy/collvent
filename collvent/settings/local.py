@@ -16,7 +16,10 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': '',
         'PORT': '',
-    }
+        'OPTIONS': {
+            'autocommit': True,
+        },
+    },
 }
 
 STATIC_URL = '/content/static/'
