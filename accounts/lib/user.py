@@ -5,12 +5,12 @@ from django.utils.encoding import smart_text
 phone_digits_re = re.compile(r'^(?:1-?)?(\d{3})[-\.]?(\d{3})[-\.]?(\d{4})$')
 
 def validate_password(in_pass):
-    if len(in_pass) < 6: raise ValidationError
+    if len(in_pass) < 6: raise ValidationError('Password is invalid.')
 
 def clean_us_phone_number(in_phone):
     value = re.sub('(\(|\)|\s+)', '', smart_text(in_phone))
     matches = phone_digits_re.search(value)
-    if not matches: raise ValidationError
+    if not matches: raise ValidationError('Phone number is invalid.')
     return value
 
 def update_user(user, email, phone, password, first_name, last_name):
