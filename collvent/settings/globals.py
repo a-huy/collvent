@@ -13,7 +13,13 @@ ADMINS = (
     ('Andy Nguyen', 'anguyenhuy@gmail.com'),
     ('Mike Wilson', 'computergeekxp@gmail.com'),
     ('Benjamin Chow', 'benachow@gmail.com'),
-    # ('Your Name', 'your_email@example.com'),
+)
+
+AUTH_USER_MODEL = 'accounts.User'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.CollventBackend',
 )
 
 MANAGERS = ADMINS
