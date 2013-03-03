@@ -112,5 +112,5 @@ body
 	height: 40px;
 	display: inline-block;
 	
-	background-image: url("{{ STATIC_URL }}images/base/add_event.png");
+	background-image: url("/content/static/images/base/add_event.png");
 }
