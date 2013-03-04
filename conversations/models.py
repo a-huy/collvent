@@ -18,4 +18,3 @@ class ConversationMessage(base_models.Base):
         conversation = models.ForeignKey(Conversation)
         owner = models.ForeignKey(settings.AUTH_USER_MODEL)
         message = models.CharField(max_length=constants.MAX_SIZE_MESSAGE)
-        postDate = models.DateTimeField(null=True)
