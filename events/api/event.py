@@ -20,6 +20,8 @@ class EventCreateApi(base.RestView):
         }
         if 'description' in request.POST and request.POST['description']:
             data['description'] = request.POST['description']
+        if 'thumbnail' in request.POST and request.POST['thumbnail']:
+            data['thumbnail'] = request.POST['thumbnail']
 
         new_event = events_models.Event(**data)
         try:

@@ -24,6 +24,7 @@ class Event(b_base.Base):
         end_date = models.DateTimeField(null=True)
         description = models.TextField(max_length=constants.MAX_DESCRIPTION)
         location = models.ForeignKey(Place)
+        thumbnail = models.CharField(max_length=255)
 
         def save( self ):
             if not self.uuid:

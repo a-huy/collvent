@@ -26,7 +26,7 @@ class UserCreateApi(base.RestView):
         try:
             user_lib.validate_password(password)
         except ValidationError:
-            return HttpResponseBadRequest('Your password must be at least 6 characters')
+            return HttpResponseBadRequest('Your password must be at least 6 characters.')
         try:
             if email: validate_email(email)
             if phone: phone = user_lib.clean_us_phone_number(phone)
@@ -49,3 +49,19 @@ class UserCreateApi(base.RestView):
             user_lib.update_user(user, email, phone, password)
             return HttpResponse()
         else: return HttpResponseBadRequest('User account already exists.')
+
+class UserApi(base.RestView):
+    def PUT(self, request, user_uuid, *args, **kwargs):
+        try:
+            user = accounts_models.User.objects.get(uuid=user_uuid)
+        except accounts_models.User.DoesNotExist:
+            return HttpResponseBadRequest('User could not be found.')
+        if 'password' in request.POST and request.POST['password']:
+            password = request.POST['password']
+            try:
+                user_lib.validate_password(password)
+            except ValidationError:
+                return HttpResponseBadRequest('Your password must be at least 6 characters.')
+            user.set_password(password)
+        user.save()
+        return HttpResponse()

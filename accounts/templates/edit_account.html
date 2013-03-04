@@ -1,0 +1,30 @@
+{% extends "page_base.html" %}
+
+{% block body %}
+<h4>Change Password</h4>
+<form id="pass-change">{% csrf_token %}
+    <table>
+        <tr>
+            <td>Current Password:</td>
+            <td><input type="password" id="curr-pass" /></td>
+        </tr>
+        <tr>
+            <td>New Password:</td>
+            <td><input type="password" id="new-pass" /></td>
+        </tr>
+        <tr>
+            <td>Confirm Password:</td>
+            <td><input type="password" id="conf-pass" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="pass-submit" value="Submit" /></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</form>
+<p><div class="notify"></div></p>
+{% endblock body %}
+
+{% block scripts %}
+<script src="{{ STATIC_URL }}scripts/accounts/edit_account.js"></script>
+{% endblock scripts %}

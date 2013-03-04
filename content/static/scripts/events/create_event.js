@@ -19,6 +19,7 @@ $('#event-submit').click(function() {
     var end_date = $('#end-date').val();
     var end_time = $('#end-time').val();
     var description = $('#event-desc').val();
+    var thumbnail = $('#event-thumb').val();
     var name = $('#addr-name').val();
     var street_addr = $('#event-street-addr').val();
     var city = $('#event-city').val();
@@ -69,6 +70,7 @@ $('#event-submit').click(function() {
         { name: 'end_date', value: end_datetime }
     ]
     if (description) { event_data.push({ name: 'description', value: description }); }
+    if (thumbnail) { event_data.push({ name: 'thumbnail', value: thumbnail }); }
 
     $.ajaxSetup({
         crossDomain: false,
