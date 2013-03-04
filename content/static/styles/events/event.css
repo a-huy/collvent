@@ -6,19 +6,25 @@
 
 .eventInfoContainer .eventImage
 {
-    height: 140px;
-    padding: 5px;
+    height: 150px;
     background-size: cover;
+    background-position: center center;
     background-color: #e0e4e6;
 }
 
 .eventInfo
 {
-    position: absolute;
-    height: 140px;
     padding: 5px;
+    height: 140px;
 
     background-color: rgba(0, 0, 0, .6);
+}
+
+.eventInfoPadding
+{
+    position: absolute;
+    height: 140px;
+    width: 100%;
 }
 
 .eventInfo .eventTitleDescription
@@ -49,8 +55,15 @@
     text-shadow: 0 0 3px black;
 }
 
+.eventInfo .addressCenter
+{
+    display: block;
+    text-align: center;
+}
+
 .eventInfo .addressContainer
 {
+    display: inline-block;
     height: 15px;
     padding-left: 15px;
 
