@@ -226,3 +226,37 @@
 {
 	margin-top: -34px;
 }
+
+
+/* addEventBlock */
+
+.addEventBlock
+{
+	display: block;
+	padding: 1px;
+	margin: 3px;
+	margin-left: 6px;
+	margin-right: 6px;
+	line-height: 14px;
+
+	border-radius: 2px;
+
+	background-color: #f2f4f5;
+
+	text-align: center;
+}
+
+.addEventBlock .icon
+{
+	margin-right: 5px;
+
+	font-size: 14px;
+	font-weight: bold;
+	color: #aeb0b1;
+}
+
+.addEventBlock .title
+{
+	color: #aeb0b1;
+	font-size: 12px;
+}
