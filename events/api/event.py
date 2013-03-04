@@ -1,4 +1,3 @@
-from uuid import uuid4
 import datetime
 from django.http import HttpResponse, HttpResponseBadRequest
 import base.api.base as base
@@ -28,6 +27,5 @@ class EventCreateApi(base.RestView):
                 title=new_event.title)
             return HttpResponseBadRequest('Event already exists.')
         except events_models.Event.DoesNotExist:
-            new_event.uuid = uuid4().hex
             new_event.save()
             return base.ApiResponse({ 'event_uuid': new_event.uuid })
