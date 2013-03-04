@@ -86,7 +86,6 @@ def event(request, event_uuid):
 
     template_vars = {
         'event': event,
-        'invite': invite,
         'content': content,
         'messages': messages,
         'messageGroup': messageGroup,
@@ -95,9 +94,10 @@ def event(request, event_uuid):
             'google_api_key': settings.GOOGLE_API_KEY,
             'loc_lng': str(event.location.longitude),
             'loc_lat': str(event.location.latitude),
-            'invite_uuid': str(invite.uuid),
         },
     }
-    if invite: template_vars['invite'] = invite
+    if invite:
+        template_vars['invite'] = invite
+        template_vars['json_vars']['invite_uuid'] = str(invite.uuid)
     return render_to_response('event.html', template_vars,
         context_instance=RequestContext(request))
