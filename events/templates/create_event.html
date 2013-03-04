@@ -7,31 +7,30 @@
 <p><a href="{% url 'create_account' %}">Register</a></p>
 {% endif %}
 <form id="create-form">{% csrf_token %}
-    <p><table>
-        <tr>
-            <td>Title:</td>
-            <td><input id="event-title" type="text" /></td>
-        </tr>
-        <tr class="datetime">
-            <td>Start Date:</td>
-            <td><input id="start-date" type="text" />
-                <input id="start-time" type="text" /></td>
-        </tr>
-        <tr class="datetime">
-            <td>End Date:</td>
-            <td><input id="end-date" type="text" />
-                <input id="end-time" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Description:</td>
-        </tr>
-        <tr>
-            <td><textarea id="event-desc"></textarea></td>
-        </tr>
-        <tr>
-            <td>Thumbnail URL:</td>
-            <td><input id="event-thumb" /></td>
-    </table></p>
+    <p>
+        <table>
+            <tr>
+                <td>Title:</td>
+                <td><input id="event-title" type="text" /></td>
+            </tr>
+            <tr class="datetime">
+                <td>Start Date:</td>
+                <td><input id="start-date" type="text" />
+                    <input id="start-time" type="text" /></td>
+            </tr>
+            <tr class="datetime">
+                <td>End Date:</td>
+                <td><input id="end-date" type="text" />
+                    <input id="end-time" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Thumbnail URL:</td>
+                <td><input id="event-thumb" /></td>
+            </tr>
+        </table>
+        Description:<br />
+        <textarea id="event-desc"></textarea>
+    </p>
     <p><h4>Location</h4>
         <table>
             <tr>
