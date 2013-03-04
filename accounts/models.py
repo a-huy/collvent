@@ -63,7 +63,8 @@ class User(AbstractBaseUser):
         events.extend(self.event_set.filter(start_date__gte=timezone.now()))
         for invitation in self.invitation_set.filter(event__start_date__gte=timezone.now()):
             events.append(invitation.event)
-        return events.sort(key=lambda event: event.start_date)
+        events.sort(key=lambda event: event.start_date)
+        return events
 
     def getEventRsvp(self, event):
         invitation = eventModels.Invitation.objects.filter(user=self, event=event)

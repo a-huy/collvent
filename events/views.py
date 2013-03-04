@@ -18,6 +18,7 @@ def create_event(request):
 def list_events(request):
     template_vars = {}
     events = request.user.getEvents()
+    print events
     for event in events:
         status = request.user.getEventRsvp(event)
         event.rsvp_status = status
