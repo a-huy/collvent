@@ -1,0 +1,226 @@
+#EventList
+{
+	padding: 5px;
+}
+
+
+/* listHeader */
+
+#EventList .listHeader
+{
+	height: 18px;
+	margin-top: 5px;
+	margin-bottom: 18px;
+
+	line-height: 18px;
+	vertical-align: top;
+}
+
+#EventList .listHeader .title
+{
+	font-size: 28px;
+	color: #efefef;
+}
+
+#EventList .listHeader .button
+{
+	margin-left: 4px;
+	padding: 3px 4px 3px 4px;
+
+	font-size: 12px;
+	color: #ced4d7;
+}
+
+#EventList .listHeader .button.selected
+{
+	color: #ffffff;
+
+	background-color: #e3e7e9;
+	border-radius: 4px;
+}
+
+
+/* weekGroup */
+
+#EventList .weekGroup .weekHeader
+{
+	line-height: 12px;
+}
+
+#EventList .weekGroup .weekHeader .weekTitle
+{
+	color: #a0a1a1;
+
+	font-size: 12px;
+}
+
+#EventList .weekGroup .weekHeader .weekDate
+{
+	color: #a0a1a1;
+
+	font-size: 12px;
+}
+
+
+/* dayGroup */
+
+#EventList .dayGroup
+{
+	margin-left: 2px;
+}
+
+#EventList .dayGroup .dayTitle
+{
+	color: #a0a1a1;
+
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#EventList .dayGroup .dayTitle
+{
+	color: #a0a1a1;
+
+	font-size: 13px;
+	font-weight: bold;
+}
+
+
+/* hourGroup */
+#EventList .hourGroup
+{
+	margin-left: 11px;
+}
+
+#EventList .hourGroup .hourTitle
+{
+	color: #a0a1a1;
+
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/* event */
+
+#EventList .eventContainer
+{
+	margin: 6px 0 6px 6px;
+	margin-left: 21px;
+}
+
+#EventList .eventContainer .event
+{
+	height: 38px;
+	padding: 1px;
+
+	border: 1px solid #e3e7e9;
+	border-radius: 2px;
+
+	background-color: #ffffff;
+}
+
+#EventList .eventContainer .event .eventRsvp
+{
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	margin-top: 24px;
+	margin-left: -1px;
+}
+
+#EventList .eventContainer .event.rsvpYes .eventRsvp
+{
+	background-image: url('/content/static/images/events/rsvp_yes.png');
+}
+
+#EventList .eventContainer .event.rsvpNo
+{
+	opacity: .3;
+}
+
+#EventList .eventContainer .event.rsvpNo .eventRsvp
+{
+	background-image: url('/content/static/images/events/rsvp_no.png');
+}
+
+#EventList .eventContainer .event.rsvpNoresponse .eventRsvp
+{
+	background-image: url('/content/static/images/events/rsvp_noresponse.png');
+}
+
+#EventList .eventContainer .event .eventImage
+{
+	width: 22%;
+	height: 100%;
+	display: inline-block;
+
+	background-color: #cbcfd1;
+}
+
+#EventList .eventContainer .event .eventBody
+{
+	height: 100%;
+	width: 78%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#EventList .eventContainer .event .eventTitle
+{
+	margin-bottom: 1px;
+	margin-left: 3px;
+
+	color: #48494a;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#EventList .eventContainer .event .eventDescription
+{
+	height: 2em;
+	overflow: hidden;
+	margin-left: 3px;
+
+	color: #48494a;
+	font-style: italic;
+	font-size: 11px;
+	line-height: 95%;
+}
+
+#EventList .eventContainer .event .notificationCount
+{
+	float: right;
+	background-color: #e3e7e9;
+
+	line-height: 19px;
+	padding: 5px 7px 5px 7px;
+	margin: 3px;
+
+	border-radius: 3px;
+
+	color: #ffffff;
+	font-size: 23px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+#EventList .eventContainer .event.notificationCountEmpty .notificationCount
+{
+	display: none;
+}
+
+/* HACK */
+#EventList .eventContainer .event.notificationCountEmpty .eventDescription
+{
+	margin-right: 0;
+}
+
+#EventList .eventContainer .event .eventDescription 
+{
+	margin-right: 35px;
+}
+
+#EventList .eventContainer .event .notificationCount
+{
+	margin-top: -34px;
+}
