@@ -1,21 +1,22 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
         {% block title %}
         {% endblock title %}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" href="{{ STATIC_URL }}styles/base/normalize.css"
+        <link rel="stylesheet" href="{% static 'styles/base/normalize.css' %}"
             type="text/css" media="screen" />
-		<link rel="stylesheet" href="{{ STATIC_URL }}styles/base/page_base.css"
+		<link rel="stylesheet" href="{% static 'styles/base/page_base.css' %}"
             type="text/css" media="screen" />
-        <link rel="stylesheet" href="{{ STATIC_URL }}styles/base/navigation_bar.css"
+        <link rel="stylesheet" href="{% static 'styles/base/navigation_bar.css' %}"
             type="text/css" media="screen" />
         {% block styles %}
         {% endblock styles %}
 
-        <script src="{{ STATIC_URL }}scripts/base/jquery-1.9.1.min.js"></script>
-        <script src="{{ STATIC_URL }}scripts/base/jquery-ui-1.10.1.min.js"></script>
-        <script src="{{ STATIC_URL }}scripts/base/base.js"></script>
+        <script src="{% static 'scripts/base/jquery-1.9.1.min.js' %}"></script>
+        <script src="{% static 'scripts/base/jquery-ui-1.10.1.min.js' %}"></script>
+        <script src="{% static 'scripts/base/base.js' %}"></script>
         <script type="text/javascript">
             {% if json_vars %}
             var jsonVars = {{ json_vars|safe }};

@@ -90,7 +90,7 @@
 	width: 15px;
 	height: 40px;
 	display: inline-block;
-	padding-right: 12px;
+	margin-right: 12px;
 	
 	background-image: url("/content/static/images/base/add_event.png");
 }

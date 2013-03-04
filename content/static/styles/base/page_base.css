@@ -12,3 +12,8 @@ body
 {
 	float: right;
 }
+
+a
+{
+	text-decoration: none;
+}
