@@ -10,7 +10,7 @@
 {
 	height: 18px;
 	margin-top: 5px;
-	margin-bottom: 18px;
+	margin-bottom: 5px;
 
 	line-height: 18px;
 	vertical-align: top;
@@ -44,6 +44,8 @@
 
 #EventList .weekGroup .weekHeader
 {
+	margin-top: 23px;
+
 	line-height: 12px;
 }
 

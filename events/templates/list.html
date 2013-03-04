@@ -16,33 +16,40 @@
 			</div>
 		</div>
 		<div class="listResults">
-			<div class="weekGroup">
-				<div class="weekHeader">
-					<div class="left weekTitle">This Week</div>
-					<div class="right weekDate">3/4/13</div>
-					<div style="clear:both;"></div>
-				</div>
-				<div class="dayGroup">
-					<div class="dayTitle">mon</div>
-					<div class="hourGroup">
-						<div class="left hourTitle" style="display: inline-block">8a</div><!--
-						--><div class="eventContainer">
-							<div class="event rsvpYes notificationCountEmpty">
-								<div class="eventRsvp"></div>
-								<div class="left eventImage">
-									<ing src=""/>
-								</div>
-								<div class="eventBody"><!--
-									--><div class="eventTitle">AngleHack</div><!--
-									--><div class="eventDescription">
-										The LAUNCH Festival celebrates startups, innovation and of course the people who build amazing new products. That's why we're partnering with AngelHack to host our first-ever LAUNCH Hackathon the weekend before the 2013 Festival -- we want the best devs and designers to make cool stuff, to finally build that killer app they've been thinking about for months.
-									</div>
-									<div class="notificationCount">3</div>
-								</div>
-						</div>
+			{% for weekGroup in weekGroups %}
+				<div class="weekGroup">
+					<div class="weekHeader">
+						<div class="left weekTitle">{{ weekGroup.title }}</div>
+						<div class="right weekDate">{{ weekGroup.date|date:"n/j/y" }}</div>
+						<div style="clear:both;"></div>
 					</div>
+                    {% for dayGroup in weekGroup.dayGroups %}
+    					<div class="dayGroup">
+    						<div class="dayTitle">{{ dayGroup.day }}</div>
+                            {% for hourGroup in dayGroup.hourGroups %}
+        						<div class="hourGroup">
+        							<div class="left hourTitle" style="display: inline-block">8a</div>
+                                        {% for event in hourGroup.events %}
+                                            <div class="eventContainer">
+                								<div class="event rsvpYes notificationCountEmpty">
+                									<div class="eventRsvp"></div>
+                									<div class="left eventImage">
+                										<ing src=""/>
+                									</div>
+                									<div class="eventBody"><!--
+                										--><div class="eventTitle">{{ event.title }}</div><!--
+                										--><div class="eventDescription">{{ event.description }}</div>
+                										<div class="notificationCount">3</div>
+                									</div>
+                                                </div>
+                							</div>
+                                        {% endfor %}
+        						</div>
+                            {% endfor %}
+    					</div>
+                    {% endfor %}
 				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 {% endblock body %}

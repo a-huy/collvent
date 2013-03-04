@@ -39,13 +39,13 @@ def groupIntoWeeks( events ):
 	if thisWeek:
 		# print 'this week: ', thisWeek
 		dayGroups = groupIntoDays(thisWeek);
-		groups.append( {'title':'This Week', 'dayGroups':dayGroups} )
+		groups.append( {'title':'This Week', 'date':thisWeek[0].start_date.date(), 'dayGroups':dayGroups} )
 	if nextWeek:
 		dayGroups = groupIntoDays(nextWeek);
-		groups.append( {'title':'Next Week', 'dayGroups':dayGroups} )
+		groups.append( {'title':'Next Week', 'date':nextWeek[0].start_date.date(), 'dayGroups':dayGroups} )
 	if rest:
 		dayGroups = groupIntoDays(rest);
-		groups.append( {'title':'Rest', 'dayGroups':dayGroups} )
+		groups.append( {'title':'Rest', 'date':rest[0].start_date.date(), 'dayGroups':dayGroups} )
 	return groups
 
 def groupIntoDays( events ):
