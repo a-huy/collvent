@@ -1,0 +1,7 @@
+input {
+    width: 160px;
+}
+
+.datetime input {
+    width: 75px;
+}
