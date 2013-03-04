@@ -21,4 +21,4 @@ def send_invitation(ident_type, invite):
         message = 'You can access the event page here: %s' % url
         send_mail(subject, message, 'noreply@%s' % settings.DOMAIN, [invite.user.email])
     else:
-        pass
+        pass # add SMS invitations
