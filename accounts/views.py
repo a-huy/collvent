@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, \
     HttpResponse
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 import django.contrib.auth as auth
 
 def login(request):
@@ -32,4 +33,9 @@ def logout(request):
 
 def create_account(request):
     return render_to_response('create_account.html', {},
+        context_instance=RequestContext(request))
+
+@login_required
+def edit_account(request):
+    return render_to_response('edit_account.html', {},
         context_instance=RequestContext(request))

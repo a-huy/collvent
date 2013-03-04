@@ -1,0 +1,26 @@
+{% extends "page_base.html" %}
+
+{% block body %}
+<h4>Change Password</h4>
+<form id="pass-change">
+    <table>
+        <tr>
+            <td>Current Password:</td>
+            <td><input type="password" id="curr-pass" /></td>
+        </tr>
+        <tr>
+            <td>New Password:</td>
+            <td><input type="password" id="new-pass" /></td>
+        </tr>
+        <tr>
+            <td>Confirm Password:</td>
+            <td><input type="password" id="conf-pass" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" id="pass-submit" value="Submit" /></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</form>
+<div class="notify"></div>
+{% endblock body %}
