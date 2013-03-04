@@ -1,13 +1,12 @@
 <div id="Footer">
         {% if user.is_authenticated %}
             {% if user.password_set %}
-            <a class="name" href="/accounts/edit">
+            <a class="name" href="{% url 'edit_account' %}">
             {% else %}
-            <a class="name" href="/accounts/create">
+            <a class="name" href="{% url 'create_account' %}">
             {% endif %}
                 {{user.get_account_name}}
-            </a>
-            <br/>
-            <a href="/logout/">Logout</a>
+            </a> &#183;
+            <a href="{% url 'logout' %}">Logout</a>
         {% endif %}
 </div>
