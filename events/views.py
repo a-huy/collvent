@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponseBadRequest, \
 from django.template import RequestContext
 import django.contrib.auth as auth
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 import events.models as events_models
 import groups
 
@@ -47,6 +48,11 @@ def event(request, event_uuid):
         return HttpResponseBadRequest('Event does not exist')
     template_vars = {
         'event': event,
+        'json_vars': {
+            'google_api_key': settings.GOOGLE_API_KEY,
+            'loc_lng': str(event.location.longitude),
+            'loc_lat': str(event.location.latitude),
+        },
     }
     return render_to_response('event.html', template_vars,
         context_instance=RequestContext(request))

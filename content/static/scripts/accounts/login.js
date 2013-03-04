@@ -32,7 +32,7 @@ $('#login-submit').click(function() {
         ],
         success: function(output) {
             if (!next || next == '') {
-                document.location = '/'
+                document.location = '/events/list/'
             }
             else { document.location = next }
         },

@@ -18,7 +18,7 @@ def login(request):
                 if 'next' in request.POST and request.POST['next']:
                     print 'next = ', request.POST['next']
                     return redirect(request.POST['next'])
-                else: return redirect('/')
+                else: return redirect('/events/list/')
         else: return HttpResponseBadRequest('Invalid credentials.')
     template_vars = {
         'next': request.GET.get('next', ''),

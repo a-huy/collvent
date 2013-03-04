@@ -1,14 +1,8 @@
 {% extends "page_base.html" %}
 
 {% block body %}
-<div style="overflow-x: scroll; white-space:nowrap;">
-    this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text this is dummy text 
-</div>
-YOLO SWAG
-
 <p><a href="{% url 'create_account' %}">Create Account</a></p>
 {% if user.is_authenticated %}
-<p>{{ user.uuid }}</p>
 <p><a href="{% url 'logout' %}">Logout</a></p>
 {% else %}
 <p><a href="{% url 'login' %}">Login</a></p>
