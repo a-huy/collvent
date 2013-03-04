@@ -122,3 +122,25 @@
     font-weight: bold;
     text-shadow: 0 0 3px black;
 }
+
+/* section */
+
+.section
+{
+    margin: 5px;
+    margin-top: 20px;
+}
+
+.section .sectionTitle
+{
+
+    color: #cbcfd1;
+    font-size: 14px;
+
+    border-bottom: 1px solid #cbcfd1;
+}
+
+.section .sectionContent
+{
+    padding: 2px;
+}

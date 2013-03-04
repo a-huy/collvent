@@ -62,22 +62,17 @@ def event(request, event_uuid):
     messageGroup = []
     groupedSet = []
     for x in messages:
-        print "date: ", x.created_date
-        print "convo: ", x.conversation.title
         if groupedSet:
             if groupedSet[0].conversation.title == x.conversation.title:
                 groupedSet.append(x)
-                print "leaving if"
             else:
                 messageGroup.append(groupedSet)
                 groupedSet = []
                 groupedSet.append(x)
-                print "leaving else on == if fail"
         else:
             messageGroup.append(groupedSet)
             groupedSet = []
             groupedSet.append(x)
-            print "leaving else"
         if x == messages[-1]:
             messageGroup.append(groupedSet)
 

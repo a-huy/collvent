@@ -1,4 +1,5 @@
 {% extends "page_base.html" %}
+{% load humanize %}
 
 {% block body %}
     <div class="eventInfoContainer">
@@ -24,6 +25,9 @@
                                     <div class="endTime">{{ event.end_date|date:'g:ia' }}</div>
                                     {% endif %}
                                 </div>
+                                <div class="eventRsvp">
+                                    I'm 
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -44,6 +48,36 @@
             </div>
         </div>
         <div class="eventImage" style="background-image:url('{{ event.thumbnail }}')"></div>
+    </div>
+
+    <div class="section discussionSection">
+        <div class="sectionTitle">vote</div>
+        <div class="sectionContent">
+        </div>
+    </div>
+
+    <div class="section discussionSection">
+        <div class="sectionTitle">discuss</div>
+        <div class="sectionContent">
+            {% for messageCluster in messageGroup %}
+                {% for message in messageCluster %}
+                    <div class="message">
+                        <div class="left userAvatar"></div>
+                        <div class="body">
+                            <div class="info">
+                                <a class="left userName" href="#">{{ message.owner.get_short_name }}</a>
+                                <div class="right postDate">{{ message.created_date|naturalday:'n/j/y' }} {{ message.created_date|date:'ga' }}</div>
+                                <p class="clear"></p>
+                            </div>
+                            <div class="content">
+                                {{ message.message }}
+                            </div>
+                        </div>
+                        <p class="clear"></p>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 
     <!-- <div id="map_canvas" sty;e="width:100%; height:100%;"></div> -->

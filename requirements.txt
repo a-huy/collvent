@@ -11,3 +11,4 @@ six==1.2.0
 twilio==3.4.3
 unittest2==0.5.1
 wsgiref==0.1.2
+py-pretty==1

@@ -4,6 +4,7 @@ from base.managers import ActiveManager, VanishedManager
 from accounts.constants import USER_HASH_MAX_LENGTH
 
 import datetime
+import pretty
 
 class Base(models.Model):
     created_date = models.DateTimeField(editable=False, default=django.utils.timezone.now)
@@ -55,3 +56,7 @@ class Base(models.Model):
             super(Base, self).save(*args, **kwargs)
         except DatabaseError, err:
             raise
+
+    def get_created_date_friendly(self):
+        print "PRETTY: ", pretty.date(self.created_date)
+        return "TEST"

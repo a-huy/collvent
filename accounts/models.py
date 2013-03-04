@@ -47,7 +47,7 @@ class User(AbstractBaseUser):
                 return self.phone
 
     def get_short_name(self):
-        return self.first_name or self.uuid
+        return self.first_name or self.email or self.phone
 
     def __unicode__(self):
         id_str = self.phone or self.email or self.uuid
