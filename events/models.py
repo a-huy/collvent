@@ -13,6 +13,9 @@ class Place(b_base.Base):
         longitude = models.CharField(max_length=constants.LOC_MAX_LENGTH, null=True)
         latitude = models.CharField(max_length=constants.LOC_MAX_LENGTH, null=True)
 
+        def get_address(self):
+            return '%s, %s, %s, %s' % (self.street_addr, self.city, self.state, self.zip_code)
+
 class Event(b_base.Base):
         uuid = models.CharField(max_length=255)
         title = models.CharField(max_length=constants.EVENT_TITLE_MAX_LENGTH)

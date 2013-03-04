@@ -1,49 +1,66 @@
 {% extends "page_base.html" %}
 
 {% block body %}
+    <div class="eventInfoContainer">
+        <div class="eventInfo">
+            <div class="left eventTitleDescription">
+                <div class="eventTitle">{{ event.title }}</div>
+                <div class="eventDescription">{{ event.description }}</div>
+            </div>
+            <div class="right">
+                <div class="eventDate">
+                    <div class="startWeekday">{{ event.start_date|date:'l'|lower }}</div>
+                    <div class="startDate">{{ event.start_date|date:'n/j/y' }}</div>
+                </div>
+                <div class="eventTime">
+                    <div class="startTime">{{ event.start_date|date:'g:ia' }}</div>
+                    {% if event.end_date %}
+                    <div class="endTime">{{ event.end_date|date:'g:ia' }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="clear addressContainer">
+                <a href="http://maps.google.com/?q={{ event.location.name }} {{ event.location.get_address }}">
+                    <span class="name">{{ event.location.name }}</span>
+                    <span class="address">{{ event.location.street_addr }}, {{ event.location.city }}</span>
+                </a>
+            </div>
+            <p class="clear"></p>
+        </div>
+        <div class="eventImage"></div>
+    </div>
+
+    <!-- <div id="map_canvas" sty;e="width:100%; height:100%;"></div> -->
 
 
-Welcome to the event
-<br><br>
+    {% if content %}
+        <b>Content</b><br>
+        {% for x in content %}
+            {{x}}
+            {{x.owner}} uploaded: {{x.title}} <br>
+            {{x.url}}  <br><br>
+        {% endfor %}
+    {% endif %}
 
 
-{{ user.email }} <br>
-{{event.title}} <br> <br>
-
-{% if content %}
-	<b>Content</b><br>
-	{% for x in content %}
-		{{x}}
-		{{x.owner}} uploaded: {{x.title}} <br>
-		{{x.url}}  <br><br>
-	{% endfor %}
-{% endif %}
+    {% if messages %}
+        <b>Chatter</b><br>
+        {% for x in messages %}
+            {{x.conversation.title}}     {{x.owner}} said: {{x.message}} <br>
+        {% endfor %}
+    {% endif %}
 
 
-{% if messages %}
-	<b>Chatter</b><br>
-	{% for x in messages %}
-		{{x.conversation.title}}     {{x.owner}} said: {{x.message}} <br>
-	{% endfor %}
-{% endif %}
-
-
-<br><br><br>
-{% if messageGroup %}
-	<b>Grouped Version</b><br><br>
-	{% for x in messageGroup %}
-		{% for y in x %}
-			{{y.message}} <br>
-		{% endfor %}
-		<p>======================================</p>
-	{% endfor %}
-
-{% endif %}
-
-
-
-<div id="map_canvas" sty;e="width:100%; height:100%;"></div>
-
+    <br><br><br>
+    {% if messageGroup %}
+        <b>Grouped Version</b><br><br>
+        {% for x in messageGroup %}
+            {% for y in x %}
+                {{y.message}} <br>
+            {% endfor %}
+            <p>======================================</p>
+        {% endfor %}
+    {% endif %}
 
 {% endblock body %}
 
