@@ -288,7 +288,7 @@ mikeOBJ.save()
 andyOBJ.avatar = "/content/media/andyavatar.jpg"
 andyOBJ.save()
 
-beneventOBJ = "/content/media/event1.jpg"
+beneventOBJ.thumbnail = "/content/media/event1.jpg"
 beneventOBJ.save()
 
 print "Done filling!\n"
