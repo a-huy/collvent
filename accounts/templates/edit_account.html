@@ -2,7 +2,7 @@
 
 {% block body %}
 <h4>Change Password</h4>
-<form id="pass-change">
+<form id="pass-change">{% csrf_token %}
     <table>
         <tr>
             <td>Current Password:</td>
@@ -17,11 +17,14 @@
             <td><input type="password" id="conf-pass" /></td>
         </tr>
         <tr>
-            <td><input type="submit" id="pass-submit" value="Submit" /></td>
+            <td><input type="button" id="pass-submit" value="Submit" /></td>
             <td>&nbsp;</td>
         </tr>
     </table>
 </form>
-<br />
-<div class="notify"></div>
+<p><div class="notify"></div></p>
 {% endblock body %}
+
+{% block scripts %}
+<script src="{{ STATIC_URL }}scripts/accounts/edit_account.js"></script>
+{% endblock scripts %}

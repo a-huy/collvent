@@ -37,5 +37,10 @@ def create_account(request):
 
 @login_required
 def edit_account(request):
-    return render_to_response('edit_account.html', {},
+    template_vars = {
+        'json_vars': {
+            'uuid': str(request.user.uuid),
+        }
+    }
+    return render_to_response('edit_account.html', template_vars,
         context_instance=RequestContext(request))
