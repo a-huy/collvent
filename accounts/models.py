@@ -73,3 +73,16 @@ class User(AbstractBaseUser):
         else:
             status = eventModels.Invitation._meta.get_field_by_name('status')[0].default
         return eventModels.Invitation.STATUS[status][1]
+
+    def get_account_name(self):
+        if not self.password_set:
+            if self.email:
+                guestName = self.email
+            elif self.phone:
+                guestName = self.phone
+            name = 'Guest (%s)' % guestName
+            print 'guest'
+        else:
+            print 'not Guest'
+            name = self.get_full_name()
+        return name

@@ -1,7 +1,13 @@
 <div id="Footer">
-    <ul>
         {% if user.is_authenticated %}
-            <li><a href="/logout/">Logout</a></li>
+            {% if user.password_set %}
+            <a class="name" href="/accounts/edit">
+            {% else %}
+            <a class="name" href="/accounts/create">
+            {% endif %}
+                {{user.get_account_name}}
+            </a>
+            <br/>
+            <a href="/logout/">Logout</a>
         {% endif %}
-    </ul>
 </div>
