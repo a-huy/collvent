@@ -42,4 +42,5 @@ class InvitationCreateApi(base.RestView):
         new_invite = events_models.Invitation(**data)
         new_invite.save()
         invite_lib.send_invitation(ident_type, new_invite)
+        return HttpResponse()
 
