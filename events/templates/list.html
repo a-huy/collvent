@@ -16,44 +16,48 @@
 			</div>
 		</div>
 		<div class="listResults">
-			{% for weekGroup in weekGroups %}
-				<div class="weekGroup">
-					<div class="weekHeader">
-						<div class="left weekTitle">{{ weekGroup.title }}</div>
-						<div class="right weekDate">{{ weekGroup.date|date:"n/j/y" }}</div>
-						<div style="clear:both;"></div>
-					</div>
-                    {% for dayGroup in weekGroup.dayGroups %}
-    					<div class="dayGroup">
-    						<div class="dayTitle">{{ dayGroup.day }}</div>
-                            {% for hourGroup in dayGroup.hourGroups %}
-        						<div class="hourGroup">
-        							<div class="left hourTitle" style="display: inline-block">8a</div>
-                                        {% for event in hourGroup.events %}
-                                            <div class="eventContainer">
-                								<div class="event rsvpYes notificationCountEmpty">
-                									<div class="eventRsvp"></div>
-                									<div class="left eventImage">
-                										<ing src=""/>
-                									</div>
-                									<div class="eventBody"><!--
-                										--><div class="eventTitle">{{ event.title }}</div><!--
-                										--><div class="eventDescription">{{ event.description }}</div>
-                										<div class="notificationCount">3</div>
-                									</div>
-                                                </div>
-                							</div>
-                                        {% endfor %}
-        						</div>
-                            {% endfor %}
+            {% if weekGroups|length == 0 %}
+                <div class="noEventsMessage">no events</div>
+            {% else %}
+    			{% for weekGroup in weekGroups %}
+    				<div class="weekGroup">
+    					<div class="weekHeader">
+    						<div class="left weekTitle">{{ weekGroup.title }}</div>
+    						<div class="right weekDate">{{ weekGroup.date|date:"n/j/y" }}</div>
+    						<div style="clear:both;"></div>
     					</div>
-                    {% endfor %}
-				</div>
-			{% endfor %}
+                        {% for dayGroup in weekGroup.dayGroups %}
+        					<div class="dayGroup">
+        						<div class="dayTitle">{{ dayGroup.day }}</div>
+                                {% for hourGroup in dayGroup.hourGroups %}
+            						<div class="hourGroup">
+            							<div class="left hourTitle" style="display: inline-block">8a</div>
+                                            {% for event in hourGroup.events %}
+                                                <div class="eventContainer">
+                    								<div class="event rsvp{{ event.rsvp_status|capfirst }} notificationCountEmpty">
+                    									<div class="eventRsvp"></div>
+                    									<div class="left eventImage">
+                    										<ing src=""/>
+                    									</div>
+                    									<div class="eventBody"><!--
+                    										--><div class="eventTitle">{{ event.title }}</div><!--
+                    										--><div class="eventDescription">{{ event.description }}</div>
+                    										<div class="notificationCount">3</div>
+                    									</div>
+                                                    </div>
+                    							</div>
+                                            {% endfor %}
+            						</div>
+                                {% endfor %}
+        					</div>
+                        {% endfor %}
+    				</div>
+    			{% endfor %}
+            {% endif %}
 		</div>
 	</div>
     <a class="addEventBlock" href="/events/create/">
         <span class="icon">+</span>
-        <span class="title">Add Your Event</span>
+        <span class="title">Add your event</span>
     </a>
 {% endblock body %}

@@ -68,4 +68,8 @@ class User(AbstractBaseUser):
 
     def getEventRsvp(self, event):
         invitation = eventModels.Invitation.objects.filter(user=self, event=event)
-        return invitation.status
+        if invitation:
+            status = invitation[0].status
+        else:
+            status = eventModels.Invitation._meta.get_field_by_name('status')[0].default
+        return eventModels.Invitation.STATUS[status][1]
