@@ -80,10 +80,11 @@ def event(request, event_uuid):
     try:
         if request.user != event.host:
             invite = events_models.Invitation.objects.get(event=event, user=request.user)
-        else: invite = None
+        else:
+            invite = None
     except events_models.Invitation.DoesNotExist:
         return HttpResponseBadRequest('Current user is not invited to this event.')
-
+        
     template_vars = {
         'event': event,
         'content': content,

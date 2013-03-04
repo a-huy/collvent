@@ -41,3 +41,8 @@ class Invitation(b_base.Base):
         STATUS = [(0, 'noresponse'), (1, 'no'), (2, 'yes')]
         status = models.IntegerField(choices=STATUS, default=0)
 
+        def save( self ):
+            if not self.uuid:
+                self.uuid = uuid4().hex
+            super(Invitation, self).save()
+

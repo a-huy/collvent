@@ -35,7 +35,6 @@ class InvitationCreateApi(base.RestView):
         except events_models.Invitation.DoesNotExist:
             pass
         data = {
-            'uuid': uuid4().hex,
             'user': user,
             'event': event
         }
