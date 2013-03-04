@@ -65,3 +65,7 @@ class User(AbstractBaseUser):
             events.append(invitation.event)
         print events.sort(key=lambda event: event.start_date)
         return events
+
+    def getEventRsvp(self, event):
+        invitation = eventModels.Invitation.objects.filter(user=self, event=event)
+        return invitation.status
