@@ -2,6 +2,7 @@
 {% load humanize %}
 
 {% block body %}
+{% csrf_token %}
     <div class="eventInfoContainer">
         <div class="eventInfoPadding">
             <div class="eventInfo">
@@ -111,6 +112,18 @@
             <p>======================================</p>
         {% endfor %}
     {% endif %}
+{% if invite %}
+<p>RSVP
+    <select id="status-select">
+        {% with status=invite.status %}
+        <option value="0" {% if status == 0 %}selected{% endif %}>No Response</option>
+        <option value="1" {% if status == 1 %}selected{% endif %}>Attending</option>
+        <option value="2" {% if status == 2 %}selected{% endif %}>Not Attending</option>
+        {% endwith %}
+    </select>
+</p>
+{% endif %}
+<div id="map_canvas" sty;e="width:100%; height:100%;"></div>
 
 {% endblock body %}
 

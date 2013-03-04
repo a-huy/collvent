@@ -77,11 +77,16 @@ def event(request, event_uuid):
             messageGroup.append(groupedSet)
 
 
-
-
+    try:
+        if request.user != event.host:
+            invite = events_models.Invitation.objects.get(event=event, user=request.user)
+        else: invite = None
+    except events_models.Invitation.DoesNotExist:
+        return HttpResponseBadRequest('Current user is not invited to this event.')
 
     template_vars = {
         'event': event,
+        'invite': invite,
         'content': content,
         'messages': messages,
         'messageGroup': messageGroup,
@@ -90,10 +95,9 @@ def event(request, event_uuid):
             'google_api_key': settings.GOOGLE_API_KEY,
             'loc_lng': str(event.location.longitude),
             'loc_lat': str(event.location.latitude),
+            'invite_uuid': str(invite.uuid),
         },
-
-
-
     }
+    if invite: template_vars['invite'] = invite
     return render_to_response('event.html', template_vars,
         context_instance=RequestContext(request))

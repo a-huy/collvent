@@ -44,3 +44,13 @@ class InvitationCreateApi(base.RestView):
         invite_lib.send_invitation(ident_type, new_invite)
         return HttpResponse()
 
+class InvitationApi(base.RestView):
+    def PUT(self, request, invite_uuid, *args, **kwargs):
+        try:
+            invite = events_models.Invitation.objects.get(uuid=invite_uuid)
+        except events_models.Invitation.DoesNotExist:
+            return HttpResponseBadRequest('Invitation could not be found.')
+        if 'status' in request.POST and request.POST['status']:
+            invite.status = request.POST['status']
+        invite.save()
+        return HttpResponse()

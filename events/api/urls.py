@@ -9,5 +9,6 @@ urlpatterns += patterns('events.api.event',
 )
 
 urlpatterns += patterns('events.api.invitation',
-    url(r'^invite/', 'InvitationCreateApi'),
+    url(r'^invite/$', 'InvitationCreateApi'),
+    url(r'^invite/(?P<invite_uuid>[0-9a-f]+)/$', 'InvitationApi'),
 )
