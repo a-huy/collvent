@@ -27,5 +27,5 @@ def send_invitation(ident_type, invite):
         client = TwilioRestClient(account_sid, auth_token)
         body = '%s invited you to the event "%s". You can access the event page here: %s' % \
             (host_name, title, url)
-        message = client.sms.messages.create(body=body, to="+17144019740",
-            from_="+17144082842")
+        message = client.sms.messages.create(body=body, to='+1%s' % invite.user.phone,
+            from_=settings.TWILIO_PHONE_NUMBER)
