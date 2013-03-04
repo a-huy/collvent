@@ -16,7 +16,7 @@ def send_invitation(ident_type, invite):
     event = invite.event
     host_name = event.host.get_full_name()
     title = event.title
-    url = 'http://%s/invitation/%s/' % (settings.DOMAIN, invite.uuid)
+    url = 'http://%s/events/invitation/%s/' % (settings.DOMAIN, invite.uuid)
     if ident_type == 'email':
         subject = '%s invited you to the event "%s"' % (host_name, title)
         message = 'You can access the event page here: %s' % url
