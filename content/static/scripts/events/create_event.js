@@ -107,7 +107,7 @@ $('#event-submit').click(function() {
                             });
                         }
                     });
-                    // document.location = '/events/' + msg['event_id'];
+                    document.location = '/events/' + msg['event_id'];
                 },
                 error: function(err) {
                     $('#create-form').notify({
