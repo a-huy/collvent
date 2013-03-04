@@ -7,25 +7,55 @@
 <p><a href="{% url 'create_account' %}">Register</a></p>
 {% endif %}
 <form id="create-form">{% csrf_token %}
-    <p>Title: <input id="event-title" type="text" /></p>
-    <p>
-        Start Date: <input id="start-date" type="text" />
-        <input id="start-time" type="text" />
+    <p><table>
+        <tr>
+            <td>Title:</td>
+            <td><input id="event-title" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Start Date:</td>
+            <td><input id="start-date" type="text" /></td>
+            <td><input id="start-time" type="text" /></td>
+        </tr>
+        <tr>
+            <td>End Date:</td>
+            <td><input id="end-date" type="text" /></td>
+            <td><input id="end-time" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+        </tr>
+        <tr>
+            <td><textarea id="event-desc"></textarea></td>
+        </tr>
+        <tr>
+            <td>Thumbnail URL:</td>
+            <td><input id="event-thumb" /></td>
+    </table></p>
+    <p><h4>Location</h4>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input id="addr-name" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Street Address:</td>
+                <td><input id="event-street-addr" type="text" /></td>
+            </tr>
+            <tr>
+                <td>City (optional):</td>
+                <td><input id="event-city" type="text" /></td>
+            </tr>
+            <tr>
+                <td>State (optional):</td>
+                <td><input id="event-state" type="text" /></td>
+            </tr>
+            <tr>
+                <td>ZIP Code (optional):</td>
+                <td><input id="event-zip" type="text" /></td>
+            </tr>
+        </table>
     </p>
-    <p>
-        End Date: <input id="end-date" type="text" />
-        <input id="end-time" type="text" />
-    </p>
-    <p>Description:<br /><textarea id="event-desc"></textarea></p>
-    <p>Thumbnail URL: <input id="event-thumb" /></p>
-    <div id="event-addr">
-        <h4>Location</h4>
-        <p>Name: <input id="addr-name" type="text" /></p>
-        <p>Street Address: <input id="event-street-addr" type="text" /></p>
-        <p>City (optional): <input id="event-city" type="text" /></p>
-        <p>State (optional): <input id="event-state" type="text" /></p>
-        <p>ZIP Code (optional): <input id="event-zip" type="text" /></p>
-    </div>
     <div id="event-invites">
         <div id="invite-list">
             <h4>Invitations</h4>
