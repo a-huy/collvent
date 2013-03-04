@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from accounts.managers import CollventUserManager
 import accounts.constants as constants
+from django.utils import timezone
+import events.models as eventModels
 
 class User(AbstractBaseUser):
     uuid = models.CharField(
@@ -53,3 +55,11 @@ class User(AbstractBaseUser):
     @property
     def password_set(self):
         return not self.check_password(' ')
+
+    def getEvents(self):
+        events = []
+        events.extend(self.event_set.filter(start_date__gte=timezone.now()))
+        for invitation in self.invitation_set.filter(event__start_date__gte=timezone.now()):
+            events.append(invitation.event)
+        print events.sort(key=lambda event: event.start_date)
+        return events

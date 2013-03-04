@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponseBadRequest, \
     HttpResponse
 from django.template import RequestContext
 import django.contrib.auth as auth
+from django.contrib.auth.decorators import login_required
 import events.models as em
 import django.utils.timezone as dut
 from datetime import timedelta
@@ -15,9 +16,10 @@ def create_event(request):
     return render_to_response('create_event.html', template_vars,
         context_instance=RequestContext(request))
 
+@login_required
 def list_events(request):
     template_vars = {}
-    events = em.Event.objects.all().order_by('start_date')
+    events = request.user.getEvents()
     weekGroups = groups.groupIntoWeeks(events)
 
     template_vars['weekGroups'] = weekGroups
