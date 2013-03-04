@@ -1,3 +1,5 @@
+DOMAIN = 'localhost:8000'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 

@@ -22,6 +22,7 @@ class Event(b_base.Base):
         location = models.ForeignKey(Place)
 
 class Invitation(b_base.Base):
+        uuid = models.CharField(max_length=255)
         event = models.ForeignKey(Event)
         user = models.ForeignKey(settings.AUTH_USER_MODEL)
         status = models.IntegerField(default=0)

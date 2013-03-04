@@ -1,3 +1,4 @@
+from uuid import uuid4
 from django.core.validators import validate_email
 from django.http import HttpResponse, HttpResponseBadRequest
 import base.api.base as base
@@ -22,4 +23,23 @@ class InvitationCreateApi(base.RestView):
                 ident_type = 'phone'
             except ValidationError:
                 return HttpResponseBadRequest('Identifier is neither an email nor a phone number')
-        user = invites_lib.get_or_create_user(ident_type, identifier)
+        user = invite_lib.get_or_create_user(ident_type, identifier)
+        try:
+            event = events_models.Event.objects.get(uuid=request.POST['event_uuid'])
+            if user.uuid == event.host.uuid:
+                return HttpResponseBadRequest('The host is already a part of the event.')
+            invite = events_models.Invitation.objects.get(user=user, event=event)
+            return HttpResponseBadRequest('User has already been invited to the event.')
+        except events_models.Event.DoesNotExist:
+            return HttpResponseBadRequest('Event could not be found.')
+        except events_models.Invitation.DoesNotExist:
+            pass
+        data = {
+            'uuid': uuid4().hex,
+            'user': user,
+            'event': event
+        }
+        new_invite = events_models.Invitation(**data)
+        new_invite.save()
+        invite_lib.send_invitation(ident_type, new_invite)
+

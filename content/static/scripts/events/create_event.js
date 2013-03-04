@@ -70,9 +70,6 @@ $('#event-submit').click(function() {
     ]
     if (description) { event_data.push({ name: 'description', value: description }); }
 
-    console.log(addr_data);
-    console.log(event_data);
-
     $.ajaxSetup({
         crossDomain: false,
         beforeSend: function(xhr, settings) {
@@ -96,6 +93,7 @@ $('#event-submit').click(function() {
                 success: function(msg) {
                     invites.each(function() {
                         var ident = $(this).val();
+                        console.log(ident)
                         if (ident && ident != '') {
                             $.ajax({
                                 type: 'POST',

@@ -7,3 +7,7 @@ urlpatterns = patterns('events.api.place',
 urlpatterns += patterns('events.api.event',
     url(r'^event/', 'EventCreateApi'),
 )
+
+urlpatterns += patterns('events.api.invitation',
+    url(r'^invite/', 'InvitationCreateApi'),
+)
