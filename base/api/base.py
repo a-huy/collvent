@@ -55,10 +55,8 @@ def ApiResponse(data, status_code=200, response_type='json', cookie=None):
     mimetypes = {
         'json': 'application/json',
     }
-    context_vars = {
-        'data', data,
-    }
     content = json.dumps(data, cls=DjangoJSONEncoder)
     response = HttpResponse(content, mimetype=mimetypes[response_type])
+    response.status_code = status_code
     if cookie: response.set_cookie(cookie['key'], value=cookie['value'])
     return response

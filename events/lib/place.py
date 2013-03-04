@@ -5,7 +5,7 @@ import urllib2
 # Takes a place object and returns its long / lat as a dict
 # If the update flag is passed, the Place object is updated 
 # with the coordinates
-def geocode_place(place, update=False):
+def geocode_place(place):
     endpoint = 'https://maps.googleapis.com/maps/api/geocode/json?'
     addr = '%s+%s+%s+%s' % (
         place.street_addr.replace(' ', '+'),
@@ -21,8 +21,4 @@ def geocode_place(place, update=False):
     data = json.loads(response)
     if data['status'] != 'OK': return None
     coords = data['results'][0]['geometry']['location']
-    if update:
-        place.latitude = coords['lat']
-        place.longitude = coords['lng']
-        place.save()
     return coords

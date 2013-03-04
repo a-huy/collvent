@@ -6,9 +6,9 @@ from accounts.constants import USER_HASH_MAX_LENGTH
 import datetime
 
 class Base(models.Model):
-    created_date = models.DateField(editable=False, default=django.utils.timezone.now)
-    modified_date = models.DateField(default=django.utils.timezone.now)
-    deleted_date = models.DateField(null=True, default=None, db_index=True)
+    created_date = models.DateTimeField(editable=False, default=django.utils.timezone.now)
+    modified_date = models.DateTimeField(default=django.utils.timezone.now)
+    deleted_date = models.DateTimeField(null=True, default=None, db_index=True)
     created_by = models.CharField(max_length=USER_HASH_MAX_LENGTH, editable=False)
     modified_by = models.CharField(max_length=USER_HASH_MAX_LENGTH, editable=False, null=True)
     deleted_by = models.CharField(max_length=USER_HASH_MAX_LENGTH, editable=False, null=True)

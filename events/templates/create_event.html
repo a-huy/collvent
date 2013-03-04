@@ -7,7 +7,7 @@
 <p><a href="{% url 'create_account' %}">Register</a></p>
 {% endif %}
 <form id="create-form">{% csrf_token %}
-    <p>Name: <input id="event-name" type="text" /></p>
+    <p>Title: <input id="event-title" type="text" /></p>
     <p>
         Start Date: <input id="start-date" type="text" />
         <input id="start-time" type="text" />
@@ -16,12 +16,14 @@
         End Date: <input id="end-date" type="text" />
         <input id="end-time" type="text" />
     </p>
+    <p>Description:<br /><textarea id="event-desc"></textarea></p>
     <div id="event-addr">
-        <h4>Address (optional)</h4>
+        <h4>Location</h4>
+        <p>Name: <input id="addr-name" type="text" /></p>
         <p>Street Address: <input id="event-street-addr" type="text" /></p>
-        <p>City: <input id="event-city" type="text" /></p>
-        <p>State: <input id="event-state" type="text" /></p>
-        <p>ZIP Code: <input id="event-zip" type="text" /></p>
+        <p>City (optional): <input id="event-city" type="text" /></p>
+        <p>State (optional): <input id="event-state" type="text" /></p>
+        <p>ZIP Code (optional): <input id="event-zip" type="text" /></p>
     </div>
     <div id="event-invites">
         <div id="invite-list">
@@ -33,6 +35,8 @@
         </div>
         <input type="button" id="add-invite" value="Add Invitations" />
     </div>
+    <p><input type="button" id="event-submit" value="Create Event" /></p>
+    <div class="notify"></div>
 </form>
 {% endblock body %}
 
