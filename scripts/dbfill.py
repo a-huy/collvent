@@ -279,6 +279,17 @@ cm.ConversationMessage(conversation = someoneconversationOBJ,
                        message = "NOR WILL YOU SEE THIS ONE",
                       ).save()
 
+benOBJ.avatar = "/content/media/benavatar.jpg"
+benOBJ.save()
+
+mikeOBJ.avatar = "/content/media/mikeavatar.jpg"
+mikeOBJ.save()
+
+andyOBJ.avatar = "/content/media/andyavatar.jpg"
+andyOBJ.save()
+
+beneventOBJ = "/content/media/event1.jpg"
+beneventOBJ.save()
 
 print "Done filling!\n"
 
