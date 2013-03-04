@@ -1,3 +1,32 @@
+$('#status-select').change(function() {
+    var csrftoken = getCookie('csrftoken')
+    var new_status = $(this).val();
+    console.log('/api/events/invite/' + jsonVars['invite_uuid'] + '/');
+    $.ajaxSetup({
+        crossDomain: false,
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type)) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                xhr.setRequestHeader('X-HTTP-Method-Override', 'PUT');
+            }
+        }
+    });
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: '/api/events/invite/' + jsonVars['invite_uuid'] + '/',
+        data: [
+            { name: 'status', value: new_status }
+        ],
+        success: function(output) {
+            document.location.reload();
+        },
+        error: function(err) {
+        }
+    });
+
+});
+
 function loadGoogleMapsApi() {
     var gmScript = document.createElement('script');
     gmScript.type = 'text/javascript';
