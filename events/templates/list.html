@@ -34,17 +34,19 @@
             							<div class="left hourTitle" style="display: inline-block">8a</div>
                                             {% for event in hourGroup.events %}
                                                 <div class="eventContainer">
-                    								<div class="event rsvp{{ event.rsvp_status|capfirst }} notificationCountEmpty">
-                    									<div class="eventRsvp"></div>
-                    									<div class="left eventImage">
-                    										<ing src=""/>
-                    									</div>
-                    									<div class="eventBody"><!--
-                    										--><div class="eventTitle">{{ event.title }}</div><!--
-                    										--><div class="eventDescription">{{ event.description }}</div>
-                    										<div class="notificationCount">3</div>
-                    									</div>
-                                                    </div>
+                                                    <a href="/events/{{event.uuid}}/">
+                        								<div class="event rsvp{{ event.rsvp_status|capfirst }} notificationCountEmpty">
+                        									<div class="eventRsvp"></div>
+                        									<div class="left eventImage">
+                        										<ing src=""/>
+                        									</div>
+                        									<div class="eventBody"><!--
+                        										--><div class="eventTitle">{{ event.title }}</div><!--
+                        										--><div class="eventDescription">{{ event.description }}</div>
+                        										<div class="notificationCount">3</div>
+                        									</div>
+                                                        </div>
+                                                    </a>
                     							</div>
                                             {% endfor %}
             						</div>
