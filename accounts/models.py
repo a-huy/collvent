@@ -41,7 +41,10 @@ class User(AbstractBaseUser):
             proper_last = self.last_name[0].upper() + self.last_name[1:]
             return ' '.join([proper_first, proper_last])
         else:
-            return self.uuid
+            if self.email:
+                return self.email
+            elif self.phone:
+                return self.phone
 
     def get_short_name(self):
         return self.first_name or self.uuid
@@ -81,8 +84,6 @@ class User(AbstractBaseUser):
             elif self.phone:
                 guestName = self.phone
             name = 'Guest (%s)' % guestName
-            print 'guest'
         else:
-            print 'not Guest'
             name = self.get_full_name()
         return name
