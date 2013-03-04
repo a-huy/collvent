@@ -19,6 +19,8 @@ def geocode_place(place):
     }
     response = urllib2.urlopen('%s%s' % (endpoint, urlencode(options))).read()
     data = json.loads(response)
-    if data['status'] != 'OK': return None
+    if data['status'] != 'OK':
+        print data
+        return None
     coords = data['results'][0]['geometry']['location']
     return coords
