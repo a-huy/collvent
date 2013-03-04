@@ -6,9 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponseBadRequest, \
 from django.template import RequestContext
 import django.contrib.auth as auth
 from django.contrib.auth.decorators import login_required
-import events.models as em
-import django.utils.timezone as dut
-from datetime import timedelta
+import events.models as events_models
 import groups
 
 def create_event(request):
@@ -27,6 +25,17 @@ def list_events(request):
     
     return render_to_response('list.html', template_vars,
         context_instance=RequestContext(request))
+
+def invitation(request, invite_uuid):
+    try:
+        invite = events_models.Invitation.objects.get(uuid=invite_uuid)
+    except events_models.Invitation.DoesNotExist:
+        return HttpResponseBadRequest('Invitation was not found.')
+    user = auth.authenticate(hash=invite.user.uuid)
+    if user:
+        auth.login(request, user)
+        return redirect('/events/%s' % invite.event.uuid)
+    else: return HttpResponseBadRequest('Could not validate invitation.')
 
 def event(request, event_uuid):
     try:

@@ -14,7 +14,6 @@ def login(request):
         user = auth.authenticate(identifier=identifier, password=password)
         if user:
             if user.is_active:
-                print 'yay'
                 auth.login(request, user)
                 if 'next' in request.POST and request.POST['next']:
                     print 'next = ', request.POST['next']
