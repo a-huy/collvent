@@ -2,7 +2,7 @@ import utils.djenv
 import accounts.models as am
 import events.models as em
 import conversations.models as cm
-
+import time
 import datetime
 
 
@@ -57,6 +57,7 @@ em.Place(name="Milagros Cantina",
 benOBJ = am.User.objects.get(email="ben@gmail.com")
 andyOBJ = am.User.objects.get(email="andy@gmail.com")
 mikeOBJ = am.User.objects.get(email="Mike@gmail.com")
+strangerOBJ = am.User.objects.get(email="some_user@bing.com")
 
 
 boilingcrabOBJ = em.Place.objects.get(name="Boiling Crab")
@@ -74,66 +75,91 @@ time8OBJ = datetime.datetime(2013, 4, 1)
 time9OBJ = datetime.datetime(2013, 3, 8)
 
 em.Event(host=benOBJ, 
-         description="Ben's super event", 
+         title="Ben's super event", 
          location = milagrosOBJ,
-         start_date = time1OBJ
+         start_date = time1OBJ,
+         description = "Well this is a event for ben super"
         ).save()
 em.Event(host=andyOBJ,
-         description="WE GUNNA EAT", 
+         title="WE GUNNA EAT", 
          location = boilingcrabOBJ,
-         start_date =  time2OBJ
+         start_date =  time2OBJ,
+         description = "Let me tell you something about WE GUNNA EAT"
         ).save()
 em.Event(host=mikeOBJ, 
-         description="Classic time", 
+         title="Classic time", 
          location = innoutOBJ,
-         start_date = time3OBJ
+         start_date = time3OBJ,
+         description = "Dancing with a classic time come and have some fun"
         ).save()
 em.Event(host=mikeOBJ, 
-         description="Super time", 
+         title="Super time", 
          location = innoutOBJ,
-         start_date = time4OBJ
+         start_date = time4OBJ,
+         description = "A super time is a fun time and the best time come on in"
         ).save()
 em.Event(host=mikeOBJ, 
-         description="Winning time", 
+         title="Winning time", 
          location = innoutOBJ,
-         start_date = time5OBJ
+         start_date = time5OBJ,
+         description = "I like to win and so should you and this is it"
         ).save()
 em.Event(host=benOBJ, 
-         description="Spring bing", 
+         title="Spring bing", 
          location = innoutOBJ,
-         start_date = time6OBJ
+         start_date = time6OBJ,
+         description = "It's spring time so let's have some fun!"
         ).save()
 em.Event(host=andyOBJ, 
-         description="Hangout version 2", 
+         title="Hangout version 2", 
          location = innoutOBJ,
-         start_date = time7OBJ
+         start_date = time7OBJ,
+         description = "this should be better than version 1, hopefully"
         ).save()
 em.Event(host=mikeOBJ, 
-         description="Kickback", 
+         title="Kickback", 
          location = innoutOBJ,
-         start_date = time8OBJ
+         start_date = time8OBJ,
+         description = "At my place and there should be no neighbors around so blast it"
         ).save()
 em.Event(host=benOBJ, 
-         description="Hangout version x", 
+         title="Hangout version x", 
          location = innoutOBJ,
          start_date = time9OBJ
+        ).save()
+em.Event(host=strangerOBJ, 
+         title="UKNOWN never seen", 
+         location = milagrosOBJ,
+         start_date = time9OBJ,
+         description = "THIS IS A SECRET DESCRIPTION YOU CAN'T SEE IT!"
         ).save()
 
 
 beneventOBJ = em.Event.objects.get(id=1)
 andyeventOBJ = em.Event.objects.get(id=2)
 mikeeventOBJ = em.Event.objects.get(id=3)
+strangereventOBJ = em.Event.objects.get(id=4)
 
 em.Invitation(event=beneventOBJ, user=andyOBJ).save()
 em.Invitation(event=beneventOBJ, user=mikeOBJ).save()
 em.Invitation(event=andyeventOBJ, user=mikeOBJ).save()
 em.Invitation(event=mikeeventOBJ, user=benOBJ).save()
 
-
+time1chat = datetime.datetime(2013, 3, 5)
+time2chat = datetime.datetime(2013, 3, 6)
+time3chat = datetime.datetime(2013, 3, 7)
+time4chat = datetime.datetime(2013, 3, 8)
+time5chat = datetime.datetime(2013, 3, 9)
+time6chat = datetime.datetime(2013, 3, 10)
+time7chat = datetime.datetime(2013, 3, 11)
+time8chat = datetime.datetime(2013, 3, 12)
+time9chat = datetime.datetime(2013, 3, 13)
 
 cm.Conversation(event = beneventOBJ, title="Discuss eatery places please").save()
+cm.Conversation(event = strangereventOBJ, title="THREAD SECRET never seen").save()
 
 benconversationOBJ = cm.Conversation.objects.get(title="Discuss eatery places please")
+someoneconversationOBJ = cm.Conversation.objects.get(title="THREAD SECRET never seen")
 
 cm.ConversationContent(title = "Ben's random link",
                        url = "www.bing.com",
@@ -141,20 +167,28 @@ cm.ConversationContent(title = "Ben's random link",
                        conversation = benconversationOBJ
                       ).save()
 
+time.sleep(3)
+
 cm.ConversationMessage(conversation = benconversationOBJ,
                        owner = benOBJ,
                        message = "So I want you to all look at my link",
                       ).save()
+
+time.sleep(3)
 
 cm.ConversationMessage(conversation = benconversationOBJ,
                        owner = benOBJ,
                        message = "And please be sure to post some of your own ideas where to eat",
                       ).save()
 
+time.sleep(3)
+
 cm.ConversationMessage(conversation = benconversationOBJ,
                        owner = mikeOBJ,
                        message = "Do perhaps we could try something different this time",
                       ).save()
+
+time.sleep(3)
 
 cm.ConversationContent(title = "Something different",
                        url = "www.google.com",
@@ -162,10 +196,14 @@ cm.ConversationContent(title = "Something different",
                        conversation = benconversationOBJ
                       ).save()
 
+time.sleep(3)
+
 cm.ConversationMessage(conversation = benconversationOBJ,
                        owner = mikeOBJ,
                        message = "So I want you to all look at my link",
                       ).save()
+
+time.sleep(3)
 
 cm.ConversationMessage(conversation = benconversationOBJ,
                        owner = andyOBJ,
@@ -177,20 +215,40 @@ cm.ConversationMessage(conversation = benconversationOBJ,
                        message = "I'm open to that as well",
                       ).save()
 
+time.sleep(3)
+
 cm.ConversationContent(title = "Thai food",
                        url = "http://en.wikipedia.org/wiki/Thai_cuisine",
                        owner = andyOBJ,
                        conversation = benconversationOBJ
                       ).save()
 
+time.sleep(3)
+
 cm.ConversationMessage(conversation = benconversationOBJ,
                        owner = andyOBJ,
                        message = "More like that",
                       ).save()
 
+time.sleep(3)
+
 cm.ConversationMessage(conversation = benconversationOBJ,
                        owner = benOBJ,
                        message = "Sounds peachy",
+                      ).save()
+
+time.sleep(3)
+
+cm.ConversationMessage(conversation = someoneconversationOBJ,
+                       owner = strangerOBJ,
+                       message = "YOUSHALLNEVER SEE THIS COMMENT",
+                      ).save()
+
+time.sleep(3)
+
+cm.ConversationMessage(conversation = someoneconversationOBJ,
+                       owner = strangerOBJ,
+                       message = "NOR WILL YOU SEE THIS ONE",
                       ).save()
 
 
