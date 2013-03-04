@@ -8,7 +8,7 @@ import django.contrib.auth as auth
 import events.models as em
 import django.utils.timezone as dut
 from datetime import timedelta
-
+import groups
 
 def create_event(request):
     template_vars = {}
@@ -17,6 +17,11 @@ def create_event(request):
 
 def list_events(request):
     template_vars = {}
+    events = em.Event.objects.all().order_by('start_date')
+    weekGroups = groups.groupIntoWeeks(events)
+
+    template_vars['weekGroups'] = weekGroups
+    
     return render_to_response('list.html', template_vars,
         context_instance=RequestContext(request))
 
