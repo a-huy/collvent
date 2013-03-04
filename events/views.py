@@ -8,6 +8,7 @@ import django.contrib.auth as auth
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import events.models as events_models
+import conversations.models as conversations_models
 import groups
 
 def create_event(request):
@@ -46,13 +47,58 @@ def event(request, event_uuid):
         event = events_models.Event.objects.get(uuid=event_uuid)
     except events_models.Event.DoesNotExist:
         return HttpResponseBadRequest('Event does not exist')
+
+    convo = conversations_models.Conversation.objects.filter(event = event)
+    content = []
+    messages = []
+
+    print "conversations list: ", convo
+    for x in convo:
+        content.extend(conversations_models.ConversationContent.objects.filter(conversation = x).order_by("created_date"))
+        messages.extend(conversations_models.ConversationMessage.objects.filter(conversation = x).order_by("created_date"))
+
+    messages.sort(key=lambda messages: messages.created_date)
+
+    messageGroup = []
+    groupedSet = []
+    for x in messages:
+        print "date: ", x.created_date
+        print "convo: ", x.conversation.title
+        if groupedSet:
+            if groupedSet[0].conversation.title == x.conversation.title:
+                groupedSet.append(x)
+                print "leaving if"
+            else:
+                messageGroup.append(groupedSet)
+                groupedSet = []
+                groupedSet.append(x)
+                print "leaving else on == if fail"
+        else:
+            messageGroup.append(groupedSet)
+            groupedSet = []
+            groupedSet.append(x)
+            print "leaving else"
+        if x == messages[-1]:
+            messageGroup.append(groupedSet)
+
+
+
+
+
     template_vars = {
         'event': event,
+        'content': content,
+        'messages': messages,
+        'messageGroup': messageGroup,
+
         'json_vars': {
             'google_api_key': settings.GOOGLE_API_KEY,
             'loc_lng': str(event.location.longitude),
             'loc_lat': str(event.location.latitude),
         },
+
+
+
     }
     return render_to_response('event.html', template_vars,
         context_instance=RequestContext(request))

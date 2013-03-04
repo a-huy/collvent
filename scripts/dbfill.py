@@ -156,34 +156,40 @@ time8chat = datetime.datetime(2013, 3, 12)
 time9chat = datetime.datetime(2013, 3, 13)
 
 cm.Conversation(event = beneventOBJ, title="Discuss eatery places please").save()
+cm.Conversation(event = beneventOBJ, title="When to eat?").save()
+cm.Conversation(event = beneventOBJ, title="General").save()
 cm.Conversation(event = strangereventOBJ, title="THREAD SECRET never seen").save()
 
-benconversationOBJ = cm.Conversation.objects.get(title="Discuss eatery places please")
+benconversationWHEREOBJ = cm.Conversation.objects.get(title="Discuss eatery places please")
+benconversationWHENOBJ = cm.Conversation.objects.get(title="When to eat?")
+benconversationGENOBJ = cm.Conversation.objects.get(title="General")
+
+
 someoneconversationOBJ = cm.Conversation.objects.get(title="THREAD SECRET never seen")
 
 cm.ConversationContent(title = "Ben's random link",
                        url = "www.bing.com",
                        owner = benOBJ,
-                       conversation = benconversationOBJ
+                       conversation = benconversationWHEREOBJ
                       ).save()
 
 time.sleep(3)
 
-cm.ConversationMessage(conversation = benconversationOBJ,
+cm.ConversationMessage(conversation = benconversationWHEREOBJ,
                        owner = benOBJ,
                        message = "So I want you to all look at my link",
                       ).save()
 
 time.sleep(3)
 
-cm.ConversationMessage(conversation = benconversationOBJ,
+cm.ConversationMessage(conversation = benconversationWHEREOBJ,
                        owner = benOBJ,
                        message = "And please be sure to post some of your own ideas where to eat",
                       ).save()
 
 time.sleep(3)
 
-cm.ConversationMessage(conversation = benconversationOBJ,
+cm.ConversationMessage(conversation = benconversationWHEREOBJ,
                        owner = mikeOBJ,
                        message = "Do perhaps we could try something different this time",
                       ).save()
@@ -193,24 +199,38 @@ time.sleep(3)
 cm.ConversationContent(title = "Something different",
                        url = "www.google.com",
                        owner = mikeOBJ,
-                       conversation = benconversationOBJ
+                       conversation = benconversationWHEREOBJ
                       ).save()
 
 time.sleep(3)
 
-cm.ConversationMessage(conversation = benconversationOBJ,
+cm.ConversationMessage(conversation = benconversationWHEREOBJ,
                        owner = mikeOBJ,
-                       message = "So I want you to all look at my link",
+                       message = "Check mine out too",
                       ).save()
 
 time.sleep(3)
 
-cm.ConversationMessage(conversation = benconversationOBJ,
+cm.ConversationMessage(conversation = benconversationWHENOBJ,
+                       owner = mikeOBJ,
+                       message = "We should discuss the time",
+                      ).save()
+
+time.sleep(3)
+
+cm.ConversationMessage(conversation = benconversationWHENOBJ,
+                       owner = benOBJ,
+                       message = "Yea, how about tomorrow?",
+                      ).save()
+
+time.sleep(3)
+
+cm.ConversationMessage(conversation = benconversationWHEREOBJ,
                        owner = andyOBJ,
                        message = "I wanted to try Thai food this time",
                       ).save()
 
-cm.ConversationMessage(conversation = benconversationOBJ,
+cm.ConversationMessage(conversation = benconversationWHEREOBJ,
                        owner = mikeOBJ,
                        message = "I'm open to that as well",
                       ).save()
@@ -220,19 +240,27 @@ time.sleep(3)
 cm.ConversationContent(title = "Thai food",
                        url = "http://en.wikipedia.org/wiki/Thai_cuisine",
                        owner = andyOBJ,
-                       conversation = benconversationOBJ
+                       conversation = benconversationWHEREOBJ
                       ).save()
 
 time.sleep(3)
 
-cm.ConversationMessage(conversation = benconversationOBJ,
+cm.ConversationMessage(conversation = benconversationWHEREOBJ,
                        owner = andyOBJ,
                        message = "More like that",
                       ).save()
 
 time.sleep(3)
 
-cm.ConversationMessage(conversation = benconversationOBJ,
+cm.ConversationMessage(conversation = benconversationWHENOBJ,
+                       owner = andyOBJ,
+                       message = "I can agree with that",
+                      ).save()
+
+time.sleep(3)
+
+
+cm.ConversationMessage(conversation = benconversationWHEREOBJ,
                        owner = benOBJ,
                        message = "Sounds peachy",
                       ).save()
