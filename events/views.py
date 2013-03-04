@@ -27,41 +27,13 @@ def list_events(request):
     return render_to_response('list.html', template_vars,
         context_instance=RequestContext(request))
 
-
-def ben_test(request):
-	alleventsOBJ = em.Event.objects.all().order_by('start_date')
-	eventTree = {}
-
-	thisWeek = []
-	nextWeek = []
-	rest = []
-
-	endThisWeek = dut.now() - timedelta(hours=8)
-	endNextWeek = dut.now()
-
-	while True:
-		if endThisWeek.strftime("%A") == 'Wednesday':
-			endNextWeek = endThisWeek + timedelta(days=7)
-			break
-		endThisWeek += timedelta(days=1)
-
-
-	for x in alleventsOBJ:
-		if x.start_date < endThisWeek:
-			thisWeek.append(x)			
-		elif x.start_date < endNextWeek:
-			nextWeek.append(x)
-		else:
-			rest.append(x)
-
-	eventTree['thisWeek'] = thisWeek
-	eventTree['nextWeek'] = nextWeek
-	eventTree['rest'] = rest
-
-	template_vars = {
-		'eventTree' : eventTree,
-		'endNext' : endNextWeek,
-		'endThis' : endThisWeek
-
-	}
-	return render_to_response('testEvent.html', template_vars, context_instance=RequestContext(request))
+def event(request, event_uuid):
+    try:
+        event = events_models.Event.objects.get(uuid=event_uuid)
+    except events_models.Event.DoesNotExist:
+        return HttpResponseBadRequest('Event does not exist')
+    template_vars = {
+        'event': event,
+    }
+    return render_to_response('event.html', template_vars,
+        context_instance=RequestContext(request))

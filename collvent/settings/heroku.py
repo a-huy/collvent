@@ -1,6 +1,8 @@
 import os
 import dj_database_url
 
+DOMAIN = 'collvent.herokuapp.com'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 

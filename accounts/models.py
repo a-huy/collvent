@@ -37,7 +37,9 @@ class User(AbstractBaseUser):
 
     def get_full_name(self):
         if self.first_name and self.last_name:
-            return ' '.join([self.first_name, self.last_name])
+            proper_first = self.first_name[0].upper() + self.first_name[1:]
+            proper_last = self.last_name[0].upper() + self.last_name[1:]
+            return ' '.join([proper_first, proper_last])
         else:
             return self.uuid
 

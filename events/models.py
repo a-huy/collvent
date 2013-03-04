@@ -12,7 +12,9 @@ class Place(b_base.Base):
         longitude = models.CharField(max_length=constants.LOC_MAX_LENGTH, null=True)
         latitude = models.CharField(max_length=constants.LOC_MAX_LENGTH, null=True)
 
-class Event(b_base.Base): 
+class Event(b_base.Base):
+        uuid = models.CharField(max_length=255)
+        title = models.CharField(max_length=constants.EVENT_TITLE_MAX_LENGTH)
         host = models.ForeignKey(settings.AUTH_USER_MODEL)
         start_date = models.DateTimeField(null=True)
         end_date = models.DateTimeField(null=True)
@@ -20,6 +22,7 @@ class Event(b_base.Base):
         location = models.ForeignKey(Place)
 
 class Invitation(b_base.Base):
+        uuid = models.CharField(max_length=255)
         event = models.ForeignKey(Event)
         user = models.ForeignKey(settings.AUTH_USER_MODEL)
-
+        status = models.IntegerField(default=0)
