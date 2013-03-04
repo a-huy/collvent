@@ -41,8 +41,8 @@ class UserCreateApi(base.RestView):
                     email=email,
                     phone=phone,
                     password=password,
-                    first_name=request.POST['first_name'],
-                    last_name=request.POST['last_name']
+                    first_name=request.POST['first_name'].lower(),
+                    last_name=request.POST['last_name'].lower()
                 )
                 return HttpResponse()
         if not user.password_set:
