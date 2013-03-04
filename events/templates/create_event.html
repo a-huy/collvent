@@ -1,0 +1,41 @@
+{% extends "page_base.html" %}
+
+{% block body %}
+{% if not user.is_authenticated %}
+<p>You must be logged in to host an event.</p>
+<p><a href="{% url 'login' %}">Log In</a></p>
+<p><a href="{% url 'create_account' %}">Register</a></p>
+{% endif %}
+<form id="create-form">{% csrf_token %}
+    <p>Name: <input id="event-name" type="text" /></p>
+    <p>
+        Start Date: <input id="start-date" type="text" />
+        <input id="start-time" type="text" />
+    </p>
+    <p>
+        End Date: <input id="end-date" type="text" />
+        <input id="end-time" type="text" />
+    </p>
+    <div id="event-addr">
+        <h4>Address (optional)</h4>
+        <p>Street Address: <input id="event-street-addr" type="text" /></p>
+        <p>City: <input id="event-city" type="text" /></p>
+        <p>State: <input id="event-state" type="text" /></p>
+        <p>ZIP Code: <input id="event-zip" type="text" /></p>
+    </div>
+    <div id="event-invites">
+        <div id="invite-list">
+            <h4>Invitations</h4>
+            <p>* Invitations can be sent via email or phone number<p>
+            <p><input type="text" /></p>
+            <p><input type="text" /></p>
+            <p><input type="text" /></p>
+        </div>
+        <input type="button" id="add-invite" value="Add Invitations" />
+    </div>
+</form>
+{% endblock body %}
+
+{% block scripts %}
+<script src="{{ STATIC_URL }}scripts/events/create_event.js"></script>
+{% endblock scripts %}

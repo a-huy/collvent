@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django_twilio',
     'south',
     'base',
     'homepage',
@@ -159,3 +160,8 @@ LOGGING = {
 
 # Google APIs
 GOOGLE_API_KEY = 'AIzaSyDsiKBKKXmX2c92w7bKQ6hJm5IeR-ACKRQ'
+
+#TWILIO SMS
+TWILIO_ACCOUNT_SID = 'ACfe85393257ca29ab6349fe5b5f3973ce'
+TWILIO_AUTH_TOKEN = 'e5362a26284a8f354ce1fb0a19898ace'
+
