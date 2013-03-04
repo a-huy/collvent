@@ -18,5 +18,5 @@ urlpatterns = patterns('',
     url(r'^login/$', 'accounts.views.login', name='login'),
     url(r'^logout/$', 'accounts.views.logout', name='logout'),
     url(r'^events/', include('events.urls')),
-    url(r'^conversations/', include('conversations.urls')),
+#    url(r'^conversations/', include('conversations.urls')),
 )
