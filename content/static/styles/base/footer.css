@@ -1,13 +1,13 @@
 #Footer
 {
-    width: 100%;
-    text-align: center;
+    vertical-align: top;
+    line-height: 80px;
+
     background-color: #cbcfd1;
-    display: inline-block;
+
+    text-align: center;
     font-size: 12px;
     font-weight: bold;
-    vertical-align: top;
-    line-height: 40px;
 }
 
 #Footer a

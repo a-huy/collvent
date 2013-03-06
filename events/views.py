@@ -48,6 +48,8 @@ def event(request, event_uuid):
     except events_models.Event.DoesNotExist:
         return HttpResponseBadRequest('Event does not exist')
 
+    event.rsvp_status = request.user.getEventRsvp(event)
+
     convo = conversations_models.Conversation.objects.filter(event = event)
     content = []
     messages = []

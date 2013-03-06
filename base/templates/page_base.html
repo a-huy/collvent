@@ -34,14 +34,14 @@
         </script>
     </head>
     <body>
-        <div id="body-wrapper">
         {% if user.is_authenticated %}
             {% include "navigation_bar.html" %}
         {% endif %}
-        {% block body %}
-        {% endblock body %}
-        {% include "footer.html" %}
+        <div id="Content">
+            {% block body %}
+            {% endblock body %}
         </div>
+        {% include "footer.html" %}
     </body>
     {% block scripts %}
     {% endblock scripts %}

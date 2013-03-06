@@ -4,6 +4,11 @@
     height: 100%;
 }
 
+#Content
+{
+    height: 100%;
+}
+
 .eventInfoContainer .eventImage
 {
     height: 150px;
@@ -29,7 +34,7 @@
 
 .eventInfo .eventTitleDescription
 {
-    height: 125px;
+    height: 122px;
 }
 
 .eventInfo .eventTitle
@@ -64,7 +69,7 @@
 .eventInfo .addressContainer
 {
     display: inline-block;
-    height: 15px;
+    height: 20px;
     padding-left: 15px;
 
     overflow: hidden;
@@ -75,6 +80,7 @@
 
     background-image: url('/content/static/images/events/locationMarker.png');
     background-repeat: no-repeat;
+    background-position: left top;
 }
 
 .eventInfo .addressContainer .name
@@ -123,11 +129,48 @@
     text-shadow: 0 0 3px black;
 }
 
+.eventInfo .rsvp option:selected
+{
+    font-weight: bold;
+}
+
 .eventInfo .eventRsvp
 {
     margin-top: 6px;
 
     font-size: 10px;
+}
+
+.eventInfo .eventRsvp option
+{
+    background-color: white;
+    border: 0 none;
+}
+
+.eventInfo .eventRsvp select
+{
+    font-weight: bold;
+}
+
+.eventInfo .eventRsvp .rsvpYes
+{
+    color: #496021;
+    background-color: #9ccf44;
+    border: 1px solid #b0e94e;
+}
+
+.eventInfo .eventRsvp .rsvpNo
+{
+    color: #a03619;
+    background-color: #e05842;
+    border: 1px solid #fea19e;
+}
+
+.eventInfo .eventRsvp .rsvpNoresponse
+{
+    color: #656666;
+    background-color: #cbcfd1;
+    border: 1px solid #aeb0b1;
 }
 
 
@@ -151,4 +194,31 @@
 .section .sectionContent
 {
     padding: 2px;
+}
+
+
+/* message */
+
+.message
+{
+    padding-top: 2px;
+}
+
+.message .userName
+{
+    color: #aeb0b1;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.message .postDate
+{
+    color: #aeb0b1;
+    font-size: 11px;
+    font-style: italic;
+}
+
+.message .content
+{
+    font-size: ;
 }

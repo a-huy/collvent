@@ -1,9 +1,11 @@
-<div id="NavigationBar">
-    <a class="button left homeButton" href="{% url 'list_events' %}"></a>
-    <div class="button left divider" href="#"></div>
-    <a class="button left notificationsButton" href="#">
-        <div class="count inactive">0</div>
-        <div class="title">Notifications</div>
-    </a>
-    <a class="button right addEventButton" href="{% url 'create_event' %}"></a>
+<div id="Header">
+    <div id="NavigationBar">
+        <a class="button left homeButton" href="{% url 'list_events' %}"></a>
+        <div class="button left divider" href="#"></div>
+        <a class="button left notificationsButton" href="#">
+            <div class="count inactive">0</div>
+            <div class="title">Notifications</div>
+        </a>
+        <a class="button right addEventButton" href="{% url 'create_event' %}"></a>
+    </div>
 </div>
