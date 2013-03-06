@@ -42,6 +42,8 @@
                                         <option value="1" {% if status == 1 %}selected{% endif %}>Not Going</option>
                                         <option value="2" {% if status == 2 %}selected{% endif %}>Going</option>
                                         {% endwith %}
+                                    {% else %}
+                                    <div class="rsvpHost">Hosting</div>
                                     {% endif %}
                                 </select>
                                 </div>

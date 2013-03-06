@@ -173,6 +173,16 @@
     border: 1px solid #aeb0b1;
 }
 
+.eventInfo .eventRsvp .rsvpHost
+{
+    text-align: center;
+    font-weight: bold;
+
+    color: #496021;
+    background-color: #9ccf44;
+    border: 1px solid #b0e94e;
+}
+
 
 /* section */
 

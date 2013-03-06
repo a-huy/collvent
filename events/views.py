@@ -21,7 +21,10 @@ def list_events(request):
     template_vars = {}
     events = request.user.getEvents()
     for event in events:
-        status = request.user.getEventRsvp(event)
+        if request.user.is_host(event):
+            status = 'host'
+        else:
+            status = request.user.getEventRsvp(event)
         event.rsvp_status = status
 
     weekGroups = groups.groupIntoWeeks(events)
